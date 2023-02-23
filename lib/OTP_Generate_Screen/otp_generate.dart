@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class OTP_Generator extends StatefulWidget {
@@ -49,19 +51,27 @@ class _OTP_GeneratorState extends State<OTP_Generator> {
             SizedBox(
               height: 10,
             ),
-            Container(
-              height: 60,
-              width: 300,
-              alignment: Alignment.center,
-              child: Text(
-                "Generate OTP",
-                style: TextStyle(fontSize: 25, color: Color(0xff15172B)),
-              ),
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [Color(0xffFFE8B8), Color(0xffF6DB87)],
+            GestureDetector(onTap: () {
+              setState(() {
+                Random rand = Random();
+                int x = 100;
+                int i = rand.nextInt(x);
+              });
+            },
+              child: Container(
+                height: 60,
+                width: 300,
+                alignment: Alignment.center,
+                child: Text(
+                  "Generate OTP",
+                  style: TextStyle(fontSize: 25, color: Color(0xff15172B)),
                 ),
-                borderRadius: BorderRadius.all(Radius.circular(30)),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Color(0xffFFE8B8), Color(0xffF6DB87)],
+                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                ),
               ),
             ), //Generate OTP
             SizedBox(
