@@ -16,6 +16,10 @@ int? a;
 String output = "";
 
 String value = "";
+void clean()
+{
+  len.clear();
+}
 
 class _OTP_GeneratorState extends State<OTP_Generator> {
   @override
@@ -60,8 +64,8 @@ class _OTP_GeneratorState extends State<OTP_Generator> {
                   {
                   Random rand = Random();
                   a = rand.nextInt(10);
-                  String b = a.toString();
-                  list.add(b);
+
+                  list.add(a);
                   }
                   output = list.join() ;
                    list = [] ;
@@ -94,7 +98,7 @@ class _OTP_GeneratorState extends State<OTP_Generator> {
               alignment: Alignment.center,
               child: Text(
                 "$output",
-                style: TextStyle(fontSize: 25, color: Color(0xff15172B)),
+                style: TextStyle(letterSpacing: 5 ,fontSize: 25, color: Color(0xff15172B)),
               ),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
@@ -109,7 +113,8 @@ class _OTP_GeneratorState extends State<OTP_Generator> {
             GestureDetector(
               onTap: () {
                 setState(() {
-                  number = 0;
+                  clean();
+                  //number = 0;
                   output = "";
 
                 });
