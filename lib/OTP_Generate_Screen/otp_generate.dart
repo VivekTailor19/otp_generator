@@ -9,8 +9,13 @@ class OTP_Generator extends StatefulWidget {
   State<OTP_Generator> createState() => _OTP_GeneratorState();
 }
 TextEditingController len = TextEditingController();
-int? number;
-int length = 0 ;
+int number = 0;
+List list = [];
+int? a;
+
+String output = "";
+
+String value = "";
 
 class _OTP_GeneratorState extends State<OTP_Generator> {
   @override
@@ -31,17 +36,13 @@ class _OTP_GeneratorState extends State<OTP_Generator> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 55.0),
               child: TextField
-                (onChanged: (value) {
-                  setState(() {
-                    number = int.parse(value);
-                    print("$number");
-                  });
-                }, 
-                controller: TextEditingController(text: len.text),
+                (
+                controller: len ,
                   style: TextStyle(color: Color(0xffFCF6BA),fontSize: 20),
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: "Enter OTP Length.",hintStyle: TextStyle(color: Color(0xffFCF6BA)),
+                    focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color:Color(0xffFCF6BA) )),
                     enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color:Color(0xffFCF6BA) ))
 
                   ),
@@ -52,10 +53,20 @@ class _OTP_GeneratorState extends State<OTP_Generator> {
               height: 10,
             ),
             GestureDetector(onTap: () {
+              number =  int.parse(len.text);
               setState(() {
-                Random rand = Random();
-                int x = 100;
-                int i = rand.nextInt(x);
+
+                for(int i= 0 ; i<number ;i++)
+                  {
+                  Random rand = Random();
+                  a = rand.nextInt(10);
+                  String b = a.toString();
+                  list.add(b);
+                  }
+                  output = list.join() ;
+                   list = [] ;
+
+                print(list);
               });
             },
               child: Container(
@@ -82,7 +93,7 @@ class _OTP_GeneratorState extends State<OTP_Generator> {
               width: 400,
               alignment: Alignment.center,
               child: Text(
-                "Helllo",
+                "$output",
                 style: TextStyle(fontSize: 25, color: Color(0xff15172B)),
               ),
               decoration: BoxDecoration(
@@ -95,19 +106,28 @@ class _OTP_GeneratorState extends State<OTP_Generator> {
             SizedBox(
               height: 10,
             ),
-            Container(
-              height: 40,
-              width: 150,
-              alignment: Alignment.center,
-              child: Text(
-                "Reset",
-                style: TextStyle(fontSize: 25, color: Color(0xff15172B)),
-              ),
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [Color(0xffFFE8B8), Color(0xffF6DB87)],
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  number = 0;
+                  output = "";
+
+                });
+              },
+              child: Container(
+                height: 40,
+                width: 150,
+                alignment: Alignment.center,
+                child: Text(
+                  "Reset",
+                  style: TextStyle(fontSize: 25, color: Color(0xff15172B)),
                 ),
-                borderRadius: BorderRadius.all(Radius.circular(30)),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Color(0xffFFE8B8), Color(0xffF6DB87)],
+                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                ),
               ),
             ),
           ],
@@ -116,3 +136,22 @@ class _OTP_GeneratorState extends State<OTP_Generator> {
     );
   }
 }
+
+
+/*
+number = 1;
+1 digit
+
+
+number = 4 ;
+
+4 digit
+
+number 10;
+
+10 digit
+
+
+
+
+* */
