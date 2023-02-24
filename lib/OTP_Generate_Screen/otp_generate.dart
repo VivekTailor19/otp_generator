@@ -18,7 +18,7 @@ String output = "";
 String value = "";
 void clean()
 {
-  len.clear();
+  len.clear();  // clear varible name use karine  clear varible
 }
 
 class _OTP_GeneratorState extends State<OTP_Generator> {
@@ -67,7 +67,7 @@ class _OTP_GeneratorState extends State<OTP_Generator> {
 
                   list.add(a);
                   }
-                  output = list.join() ;
+                  output = list.join() ; // join to list to string
                    list = [] ;
 
                 print(list);
